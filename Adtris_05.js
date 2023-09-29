@@ -46,10 +46,10 @@ function setup() {
 }
 function preload() {
   // Load sound files in the preload function
-  blockPlacementSound = loadSound('Sound/block_placement.mp3');
-  alertSound = loadSound('Sound/Alert.mp3');
-  backgroundSound = loadSound('Sound/Background.mp3');
-  levelSound = loadSound('Sound/Level.mp3');
+  blockPlacementSound = loadSound('block_placement.mp3');
+  alertSound = loadSound('Alert.mp3');
+  backgroundSound = loadSound('Background.mp3');
+  levelSound = loadSound('Level.mp3');
 }
 
 function exitLevel() {
