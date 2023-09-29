@@ -23,6 +23,7 @@ let level2Button;
 let level3Button;
 let selectedLevel = null;
 let exitButton;
+let image1;
 
 
 
@@ -50,6 +51,8 @@ function preload() {
   alertSound = loadSound('Alert.mp3');
   backgroundSound = loadSound('Background.mp3');
   levelSound = loadSound('Level.mp3');
+  image1= loadImage("Asset3.png");
+  
 }
 
 function exitLevel() {
@@ -88,8 +91,8 @@ function setupLevelButton(button, level, targetRange) {
 }
 
 function setupLevelSelection() {
-  setupLevelButton(level1Button, 1, [11, 40]);
-  setupLevelButton(level2Button, 2, [15, 40]);
+  setupLevelButton(level1Button, 1, [11, 25]);
+  setupLevelButton(level2Button, 2, [15, 30]);
   setupLevelButton(level3Button, 3, [1, 10]);
 }
 
@@ -152,6 +155,10 @@ function setupInstructionsScreen() {
 
 function draw() {
   background(220);
+  image(image1, 40, 240);
+  image1.resize(32, 200);
+  
+  
    
   // Display game components based on the selected level
   if (selectedLevel === 1) {
@@ -260,7 +267,7 @@ function mouseDragged() {
   if (selectedLevel ===3){
     }
 }
- //refactored code by simplifying and reduce repetition
+ //refactored code by simplifying and reducing repetition
 function handleMouseReleased(objectArray) {
   let placedObject = null;
 
@@ -448,37 +455,39 @@ if (selectedLevel ===3){
     
  function displayUI() {
   // Display UI logic
-  textSize(16);
+  textSize(15);
   textAlign(LEFT, CENTER);
   fill(0);
-  text(`ADTRIS`, 50, 160);
-text(`Level : ${selectedLevel}`, 550, 160);
+ // text(`ADTRIS`, 25, 320);
+text(`Level : ${selectedLevel}`, 550, 200);
 if (selectedLevel ===1) {
-text(`Target: ${targetNumber}`, 550, 200);
-text(`Score: ${score}`, 550, 280);
-text(`Remains: ${targetNumber-currentSum}`, 550, 240);
+  
+text(`Target: ${targetNumber}`, 550, 230);
+text(`Score: ${score}`, 550, 290);
+text(`Count: ${targetNumber-currentSum}`, 550, 260);
 
 }
 if (selectedLevel ===2) {
-text(`Target: ${targetNumber}`, 550, 200);
-text(`Score: ${score}`, 550, 280);
-text(`Sum: ${currentSum}`, 550, 240);
+   
+text(`Target: ${targetNumber}`, 550, 230);
+text(`Score: ${score}`, 550, 290);
+text(`Current: ${currentSum}`, 550, 260);
  if (!levelCompleted) {
       let elapsedTime = millis() - timerStartTime;
-      text(`Timer: ${round(elapsedTime / 1000)}`, 550, 310);
+      text(`Timer: ${round(elapsedTime / 1000)}`, 550, 320);
     }
 }
 
  if (selectedLevel ===3){
-   text(`Target: ${targetNumber}`, 550, 200);
-text(`Score: ${score}`, 550, 280);
-  text(`Difference: ${currentSum}`, 550, 240);
+    
+   text(`Target: ${targetNumber}`, 550, 230);
+text(`Score: ${score}`, 550, 290);
+  text(`Current: ${currentSum}`, 550, 260);
    if (!levelCompleted) {
       let elapsedTime = millis() - timerStartTime;
-      text(`Timer: ${round(elapsedTime / 1000)}`, 550, 310);
+      text(`Timer: ${round(elapsedTime / 1000)}`, 550, 320);
     }
-  
- }
+  }
 }
 
 function displayGrid() {
@@ -501,8 +510,25 @@ function displayGrid() {
 }
 
 function newLevel() {
+ if (selectedLevel ===1){
+  blocks = [];
+  generateBlocks(); 
   currentSum = 0;
+  }
+  if (selectedLevel ===2){
+  tetrominos = [];
+  tetrominosGrid = [];
+  generateTetrominos();
+  currentSum = calculateCurrentSum();
+  }
+  
+  if (selectedLevel ===3){
+  tetrominosLevel3 = [];
+  generateTetrominosLevel3();
+  currentSum = calculateCurrentSum();
+  }
 }
+
   
   function displayBlocks() {
   for (let block of blocks) {
