@@ -273,6 +273,7 @@ function handleMouseReleased(objectArray) {
   }
 
   if (placedObject !== null) {
+    blockPlacementSound.play();
     if (currentSum + placedObject.value <= targetNumber) {
       placedObject.placedOnGrid = true;
       currentSum += placedObject.value;
