@@ -465,7 +465,10 @@ if (selectedLevel ===1) {
 text(`Target: ${targetNumber}`, 550, 230);
 text(`Score: ${score}`, 550, 290);
 text(`Count: ${targetNumber-currentSum}`, 550, 260);
-
+text(`To WIN`, 550, 340);
+text(`Place blocks`, 550, 360);
+text(`On the grid`, 550, 380);
+text(`To get Target`, 550, 400);
 }
 if (selectedLevel ===2) {
    
@@ -476,6 +479,10 @@ text(`Current: ${currentSum}`, 550, 260);
       let elapsedTime = millis() - timerStartTime;
       text(`Timer: ${round(elapsedTime / 1000)}`, 550, 320);
     }
+text(`To WIN`, 550, 360);
+text(`Add blocks`, 550, 380);
+text(`To the grid`, 550, 400);
+text(`To get Target`, 550, 420);
 }
 
  if (selectedLevel ===3){
@@ -487,6 +494,10 @@ text(`Score: ${score}`, 550, 290);
       let elapsedTime = millis() - timerStartTime;
       text(`Timer: ${round(elapsedTime / 1000)}`, 550, 320);
     }
+text(`To WIN`, 550, 360);
+text(`Click blocks`, 550, 380);
+text(`To Subtract`, 550, 400);
+text(`To get Target`, 550, 420);
   }
 }
 
